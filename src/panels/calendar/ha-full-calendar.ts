@@ -255,6 +255,10 @@ class HAFullCalendar extends LitElement {
       .fc-daygrid-block-event .fc-event-main {
         padding: 0 1px;
       }
+
+      .fc-day-past .fc-daygrid-day-events {
+        opacity: 0.5;
+      }
     `;
   }
 }

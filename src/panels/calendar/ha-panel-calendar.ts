@@ -106,8 +106,6 @@ class PanelCalendar extends LitElement {
 
   private _end?: Date;
 
-  private _firstUpdate = false;
-
   protected firstUpdated(changedProps) {
     super.firstUpdated(changedProps);
     if (!this.hass) {
@@ -115,12 +113,6 @@ class PanelCalendar extends LitElement {
     }
 
     this._fetchCalendars();
-  }
-
-  protected updated() {
-    if (!this._firstUpdate) {
-      this._fetchData();
-    }
   }
 
   protected render(): TemplateResult {
@@ -164,22 +156,21 @@ class PanelCalendar extends LitElement {
   }
 
   private _fetchCalendars() {
-    this.hass.callApi<Calendar[]>("GET", "calendars").then((result) => {
-      this._calendars = result.map((cal, idx) => ({
-        selected: true,
-        calendar: cal,
-        backgroundColor: `#${palette[idx]}`,
-      }));
-    });
+    this.hass
+      .callApi<Calendar[]>("GET", "calendars")
+      .then((result) => {
+        this._calendars = result.map((cal, idx) => ({
+          selected: true,
+          calendar: cal,
+          backgroundColor: `#${palette[idx % palette.length]}`,
+        }));
+      })
+      .then(() => this._fetchData());
   }
 
   private _fetchData() {
     if (!this._start || !this._end) {
       return;
-    }
-
-    if (!this._firstUpdate && this._calendars.length) {
-      this._firstUpdate = true;
     }
 
     const start = new Date(this._start);
@@ -256,6 +247,10 @@ class PanelCalendar extends LitElement {
   private _handleViewChanged(ev: HASSDomEvent<CalendarViewChanged>) {
     this._start = ev.detail.start;
     this._end = ev.detail.end;
+
+    console.log(ev.detail.start);
+    console.log(ev.detail.end);
+
     this._fetchData();
   }
 
@@ -272,6 +267,13 @@ class PanelCalendar extends LitElement {
           padding-right: 16px;
           min-width: 170px;
           flex: 0 0 15%;
+          overflow: hidden;
+        }
+
+        .calendar-list > div {
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
         }
 
         .calendar-list-header {
