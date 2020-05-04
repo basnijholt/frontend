@@ -282,7 +282,7 @@ class PanelCalendar extends LitElement {
         }
         :host([narrow]) .content {
           flex-direction: column-reverse;
-          padding: 0;
+          padding: 8px 0 0 0;
         }
         :host([narrow]) .calendar-list {
           margin-bottom: 24px;
