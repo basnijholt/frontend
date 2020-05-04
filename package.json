@@ -26,7 +26,7 @@
   "dependencies": {
     "@fullcalendar/core": "5.0.0-beta.2",
     "@fullcalendar/daygrid": "5.0.0-beta.2",
-    "@material/chips": "^5.0.0",
+    "@material/chips": "^6.0.0-canary.35a32aaea.0",
     "@material/mwc-button": "0.14.1",
     "@material/mwc-checkbox": "0.14.1",
     "@material/mwc-dialog": "0.14.1",
@@ -36,6 +36,7 @@
     "@material/mwc-list": "0.14.1",
     "@material/mwc-menu": "0.14.1",
     "@material/mwc-ripple": "0.14.1",
+    "@material/mwc-select": "0.14.1",
     "@material/mwc-switch": "0.14.1",
     "@mdi/svg": "4.9.95",
     "@polymer/app-layout": "^3.0.2",
@@ -196,15 +197,7 @@
   "resolutions": {
     "@webcomponents/webcomponentsjs": "^2.2.10",
     "@polymer/polymer": "3.1.0",
-    "lit-html": "^1.1.2",
-    "@material/button": "^5.0.0",
-    "@material/checkbox": "^5.0.0",
-    "@material/dialog": "^5.0.0",
-    "@material/fab": "^5.0.0",
-    "@material/switch": "^5.0.0",
-    "@material/ripple": "^5.0.0",
-    "@material/dom": "^5.0.0",
-    "@material/touch-target": "^5.0.0"
+    "lit-html": "^1.1.2"
   },
   "main": "src/home-assistant.js",
   "husky": {
