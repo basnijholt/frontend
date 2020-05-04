@@ -261,6 +261,10 @@ class PanelCalendar extends LitElement {
         .content {
           padding: 16px;
           display: flex;
+          box-sizing: border-box;
+        }
+        :host(:not([narrow])) .content {
+          height: calc(100vh - 64px);
         }
         .calendar-list {
           padding-right: 16px;
@@ -279,6 +283,9 @@ class PanelCalendar extends LitElement {
         }
         ha-full-calendar {
           flex-grow: 1;
+        }
+        :host([narrow]) ha-full-calendar {
+          height: calc(100vh - 72px);
         }
         :host([narrow]) .content {
           flex-direction: column-reverse;
