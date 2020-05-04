@@ -247,6 +247,10 @@ class PanelCalendar extends LitElement {
   private _handleViewChanged(ev: HASSDomEvent<CalendarViewChanged>) {
     this._start = ev.detail.start;
     this._end = ev.detail.end;
+
+    console.log(ev.detail.start);
+    console.log(ev.detail.end);
+
     this._fetchData();
   }
 
@@ -258,7 +262,6 @@ class PanelCalendar extends LitElement {
           padding: 16px;
           display: flex;
         }
-
         .calendar-list {
           padding-right: 16px;
           min-width: 170px;
@@ -270,19 +273,16 @@ class PanelCalendar extends LitElement {
           text-overflow: ellipsis;
           overflow: hidden;
         }
-
         .calendar-list-header {
           font-size: 16px;
           padding: 16px 16px 8px 8px;
         }
-
         ha-full-calendar {
           flex-grow: 1;
         }
-
         :host([narrow]) .content {
           flex-direction: column-reverse;
-          padding: 8px 0 0 0;
+          padding: 0;
         }
         :host([narrow]) .calendar-list {
           margin-bottom: 24px;
